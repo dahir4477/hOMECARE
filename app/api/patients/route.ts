@@ -3,7 +3,7 @@ import { createServerSupabaseClient } from '@/lib/supabase/server'
 import { createPatientSchema } from '@/lib/validation'
 import { requireAuth } from '@/lib/auth'
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const user = await requireAuth()
     const supabase = await createServerSupabaseClient()

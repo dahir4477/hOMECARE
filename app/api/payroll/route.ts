@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase/server'
 import { generatePayrollSchema } from '@/lib/validation'
 import { generatePayrollForPeriod } from '@/lib/payroll'
-import { requireAuth, checkRole } from '@/lib/auth'
+import { checkRole } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   try {
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const user = await checkRole(['admin', 'manager'])
     const supabase = await createServerSupabaseClient()

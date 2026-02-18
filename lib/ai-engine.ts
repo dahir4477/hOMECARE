@@ -1,8 +1,9 @@
 import OpenAI from 'openai'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+// Initialize OpenAI only if API key is provided
+const openai = process.env.OPENAI_API_KEY 
+  ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
+  : null
 
 export interface RiskAssessmentInput {
   patientId: string
@@ -24,6 +25,11 @@ export interface RiskAssessmentResult {
 }
 
 export async function assessPatientRisk(input: RiskAssessmentInput): Promise<RiskAssessmentResult> {
+  // If OpenAI is not configured, use rule-based assessment
+  if (!openai) {
+    return calculateRuleBasedRisk(input)
+  }
+
   try {
     const prompt = `You are a healthcare risk assessment AI. Analyze the following patient data and provide a risk score (0-100) with factors and recommendations.
 

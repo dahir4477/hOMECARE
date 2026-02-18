@@ -53,11 +53,11 @@ export default function CompliancePage() {
           <CardContent>
             <div className="text-2xl font-bold">{complianceStatus.caregiverCertifications.total}</div>
             <div className="flex gap-2 mt-2">
-              <Badge variant="outline" className="text-yellow-600">
+              <Badge className="text-yellow-600 border-yellow-200">
                 {complianceStatus.caregiverCertifications.expiring} expiring
               </Badge>
               {complianceStatus.caregiverCertifications.expired > 0 && (
-                <Badge variant="outline" className="text-red-600">
+                <Badge className="text-red-600 border-red-200">
                   {complianceStatus.caregiverCertifications.expired} expired
                 </Badge>
               )}
@@ -72,7 +72,7 @@ export default function CompliancePage() {
           <CardContent>
             <div className="text-2xl font-bold">{complianceStatus.backgroundChecks.total}</div>
             <div className="flex gap-2 mt-2">
-              <Badge variant="outline" className="text-yellow-600">
+              <Badge className="text-yellow-600 border-yellow-200">
                 {complianceStatus.backgroundChecks.expiring} expiring
               </Badge>
             </div>
@@ -85,7 +85,7 @@ export default function CompliancePage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{complianceStatus.insurancePolicies.total}</div>
-            <Badge variant="outline" className="text-green-600 mt-2">
+            <Badge className="text-green-600 border-green-200 mt-2">
               All current
             </Badge>
           </CardContent>
@@ -98,11 +98,11 @@ export default function CompliancePage() {
           <CardContent>
             <div className="text-2xl font-bold">{complianceStatus.trainingRecords.total}</div>
             <div className="flex gap-2 mt-2">
-              <Badge variant="outline" className="text-yellow-600">
+              <Badge className="text-yellow-600 border-yellow-200">
                 {complianceStatus.trainingRecords.expiring} expiring
               </Badge>
               {complianceStatus.trainingRecords.expired > 0 && (
-                <Badge variant="outline" className="text-red-600">
+                <Badge className="text-red-600 border-red-200">
                   {complianceStatus.trainingRecords.expired} expired
                 </Badge>
               )}
@@ -121,10 +121,10 @@ export default function CompliancePage() {
             {auditLogs.map((log) => (
               <div key={log.id} className="flex items-start justify-between border-b pb-4 last:border-0">
                 <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <Badge variant="outline">{log.action}</Badge>
-                    <span className="text-sm text-muted-foreground">{log.user}</span>
-                  </div>
+                <div className="flex items-center gap-2">
+                  <Badge className="border">{log.action}</Badge>
+                  <span className="text-sm text-muted-foreground">{log.user}</span>
+                </div>
                   <p className="text-sm font-medium">{log.resource}</p>
                   <p className="text-xs text-muted-foreground">{log.details}</p>
                 </div>

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createServerSupabaseClient } from '@/lib/supabase/server'
 import { riskAssessmentSchema } from '@/lib/validation'
 import { assessPatientRisk } from '@/lib/ai-engine'
-import { requireAuth, checkRole } from '@/lib/auth'
+import { checkRole } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   try {

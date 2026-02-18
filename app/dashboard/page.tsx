@@ -18,7 +18,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from 'recharts'
 
@@ -193,7 +192,7 @@ export default function DashboardPage() {
               <div key={visit.id} className="flex flex-col space-y-1 p-2 rounded bg-red-50 border border-red-100">
                 <div className="text-sm font-medium">{visit.patient}</div>
                 <div className="text-xs text-muted-foreground">{visit.caregiver} • {visit.time}</div>
-                <Badge variant="outline" className="text-xs w-fit">{visit.reason}</Badge>
+                <Badge className="text-xs w-fit border">{visit.reason}</Badge>
               </div>
             ))}
           </CardContent>
@@ -209,7 +208,7 @@ export default function DashboardPage() {
               <div key={alert.id} className="flex flex-col space-y-1 p-2 rounded bg-yellow-50 border border-yellow-100">
                 <div className="text-sm font-medium">{alert.caregiver}</div>
                 <div className="text-xs text-muted-foreground">{alert.document}</div>
-                <Badge variant="outline" className="text-xs w-fit text-yellow-700">Expires in {alert.expiresIn}</Badge>
+                <Badge className="text-xs w-fit text-yellow-700 border border-yellow-200">Expires in {alert.expiresIn}</Badge>
               </div>
             ))}
           </CardContent>
@@ -226,7 +225,7 @@ export default function DashboardPage() {
                 <div className="text-sm font-medium">{alert.patient}</div>
                 <div className="text-xs text-muted-foreground">{alert.caregiver}</div>
                 <div className="text-xs text-red-600">{alert.issue}</div>
-                <Badge variant="outline" className="text-xs w-fit">{alert.confidence}% confidence</Badge>
+                <Badge className="text-xs w-fit border">{alert.confidence}% confidence</Badge>
               </div>
             ))}
           </CardContent>
@@ -245,7 +244,6 @@ export default function DashboardPage() {
                   <div className="text-xs text-muted-foreground">Count: {incident.count}</div>
                 </div>
                 <Badge 
-                  variant="outline" 
                   className={
                     incident.severity === 'high' 
                       ? 'text-red-700 border-red-200' 
